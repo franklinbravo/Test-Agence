@@ -28,7 +28,8 @@ const consultorCtrl = {
     INNER JOIN cao_usuario AS us ON us.co_usuario = os.co_usuario
     WHERE os.co_usuario in ("${users}")
     and (factura.data_emissao BETWEEN "${initDate}" AND "${finalDate}")
-    GROUP BY MONTH(factura.data_emissao), YEAR(factura.data_emissao), salario.brut_salario, os.co_usuario, us.no_usuario;
+    GROUP BY MONTH(factura.data_emissao), YEAR(factura.data_emissao), salario.brut_salario, os.co_usuario, us.no_usuario
+    ORDER BY MONTH(factura.data_emissao);
     `, (err, rows) => {
       if (err) return res.status(500).send({ error: 'Hubo un error' });
       if (rows.length === 0) return res.json({ info: "NO_USER_DATA" })

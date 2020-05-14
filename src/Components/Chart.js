@@ -9,11 +9,11 @@ export const Chart = ({ data = [], dates }) => {
   const finalDate = moment({ y: dates.yearEnd, month: dates.monthEnd }).format('MMMM YYYY')
   useEffect(() => {
     //Rellenando espacios vacios del array para que coincida en la grafica con la fechas
+    let aux = []
+    if (data.length > 0) {
+      aux = Array.from(new Set(data.reduce((a, b) => a.concat(b)).map(({ mes }) => mes))).sort()
+    }
     const fillEmptySpaces = () => {
-      let aux = []
-      if (data.length > 0) {
-        aux = Array.from(new Set(data.reduce((a, b) => a.concat(b)).map(({ mes }) => mes)))
-      }
       const newArr = []
       data.forEach((arr) => {
         const internalArr = []
@@ -32,7 +32,7 @@ export const Chart = ({ data = [], dates }) => {
             internalArr.push({
               ganancias_netas: 0,
               mes: m,
-              no_usuario: arr[0].no_usuario
+              no_usuario: arr[0]?.no_usuario
             })
           }
 
@@ -53,15 +53,12 @@ export const Chart = ({ data = [], dates }) => {
 
     let barChartData = {}
     if (data.length > 0) {
-      const arrayUnion = data.reduce((a, b) => a.concat(b))
 
       //Calculo de promedio de costo fijo
       const CostoFixo = data.map((user) => user[0]?.costo_fijo || 0)
       const totalCostoFixo = CostoFixo.reduce((a, b) => a + b) / CostoFixo.length
-      const months = arrayUnion.map(({ mes }) => moment({ month: mes - 1 }).format('MMMM'))
-      const monthsNoDuplicate = Array.from(new Set(months))
       barChartData = {
-        labels: monthsNoDuplicate,
+        labels: aux.map((mes) => moment({ month: mes - 1 }).format('MMMM')),
         datasets: [...dataChart.map((dataUser) => {
           return {
             label: dataUser[0]?.no_usuario,
@@ -76,7 +73,7 @@ export const Chart = ({ data = [], dates }) => {
           label: 'Custo Fixo Medio',
           type: 'line',
           order: 1,
-          data: monthsNoDuplicate.map((_) => totalCostoFixo)
+          data: aux.map((_) => totalCostoFixo)
         }
         ]
       }

@@ -39,7 +39,7 @@ export const TableData = ({ dataUser = [] }) => {
             dataUser.map(({ ganancias_netas, costo_fijo, comision, ano, mes }, i) => (
               <tr key={i}>
                 <th>
-                  {moment({ y: ano, M: mes - 1 }).format('MM YYYY')}
+                  {moment({ y: ano, M: mes - 1 }).format('MM/YYYY')}
                 </th>
                 <th>
                   R$ {FormatCurrency(ganancias_netas)}
