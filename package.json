@@ -1,6 +1,7 @@
 {
-  "name": "caol-fontend",
+  "name": "caol",
   "version": "0.1.0",
+  "author": "Franklin Bravo",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -9,15 +10,16 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "moment": "^2.25.3",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "morgan": "^1.10.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "react-scripts": "3.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"

@@ -4,7 +4,7 @@ const app = express();
 const morgan = require('morgan');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
-
+require('dotenv').config()
 //Middlewares
 app.use(cors());
 app.use(morgan('dev'));
