@@ -15,7 +15,7 @@ const years = (end = 2003) => {
   --end
   const init = new Date('2008').getFullYear()
   const arrayYears = []
-  while (init > end) {
+  while (init >= end) {
     arrayYears.push(++end)
   }
   return arrayYears;
@@ -25,6 +25,7 @@ export const Desempenho = () => {
 
   const leftBoxRef = useRef()
   const rightBoxRef = useRef()
+
   const { users, allData = [], getDataRelatorio } = useContext(Context)
   //Estado de las dos cajas
   const [boxLeft, setBoxLeft] = useState([])
@@ -32,13 +33,14 @@ export const Desempenho = () => {
 
   const [selectBoxLeft, setSelectBoxLeft] = useState([])
   const [selectBoxRight, setSelectBoxRight] = useState([])
+
+
   const [dates, setDates] = useState({
     yearStart: "",
     monthStart: "",
     yearEnd: "",
     monthEnd: ""
   })
-  const [dataUserSorted, setdataUserSorted] = useState([[]])
   const [showTypeData, setshowTypeData] = useState({
     showTable: false,
     showChartBar: false,
@@ -176,24 +178,6 @@ export const Desempenho = () => {
     setBoxLeft(users)
   }, [users])
 
-  useEffect(() => {
-    //Ordenando datos por usuario
-    const dividerArray = () => {
-      const divi = []
-      const newArr = new Set(allData.map(({ co_usuario }) => (co_usuario)))
-      Array.from(newArr).forEach(user => {
-        const onlyUser = allData.filter(({ co_usuario }) => co_usuario === user)
-        divi.push(onlyUser)
-      })
-      setdataUserSorted(divi)
-    }
-    if (allData.length > 0) {
-      dividerArray()
-    } else {
-      setdataUserSorted([])
-    }
-
-  }, [allData])
 
   return (
     <Container style={{ paddingTop: 150 }}  >
@@ -297,18 +281,18 @@ export const Desempenho = () => {
         <Col xs="12" style={{ minHeight: "60vh" }}>
           {
             showTypeData.showTable ?
-              dataUserSorted.map((dataUser, i) => (
+              allData.map((dataUser, i) => (
                 <TableData dataUser={dataUser} key={i} />
               )) : null
           }
           {
             showTypeData.showChartBar ?
-              <Chart data={dataUserSorted} dates={dates} />
+              <Chart data={allData} dates={dates} />
               : null
           }
           {
             showTypeData.showChartPie ?
-              <ChartPie data={dataUserSorted} />
+              <ChartPie data={allData} />
               : null
           }
         </Col>

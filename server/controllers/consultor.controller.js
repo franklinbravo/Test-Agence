@@ -33,7 +33,15 @@ const consultorCtrl = {
     `, (err, rows) => {
       if (err) return res.status(500).send({ error: 'Hubo un error' });
       if (rows.length === 0) return res.json({ info: "NO_USER_DATA" })
-      res.json({ dataUsers: rows, info: "SUCCESS" })
+
+      //Ordendando datos por usuarios
+      const dataSorted = []
+      const newArr = new Set(rows.map(({ co_usuario }) => (co_usuario)))
+      Array.from(newArr).forEach(user => {
+        const onlyUser = rows.filter(({ co_usuario }) => co_usuario === user)
+        dataSorted.push(onlyUser)
+      })
+      res.json({ dataUsers: dataSorted, info: "SUCCESS" })
     })
   }
 }

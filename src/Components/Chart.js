@@ -114,13 +114,17 @@ export const Chart = ({ data = [], dates }) => {
 
   }, [data])
   return (
-    <div>
+    <>
       <h3 className="text-center">Performance Comercial</h3>
       <p className="text-center"> {initDate} a {finalDate} </p>
+      <div style={{ overflowX: 'auto' }}>
 
-      <canvas id="myChart" ref={canvasRef}>
+        <div style={{ minHeight: '50vh', minWidth: 500 }}>
+          <canvas id="myChart" ref={canvasRef}>
 
-      </canvas>
-    </div>
+          </canvas>
+        </div>
+      </div>
+    </>
   )
 }
