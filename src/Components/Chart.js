@@ -114,7 +114,7 @@ export const Chart = ({ data = [], dates }) => {
   }, [data])
   return (
     <div>
-      <h3 className="text-center">Performance Comerce</h3>
+      <h3 className="text-center">Performance Comercial</h3>
       <p className="text-center"> {initDate} a {finalDate} </p>
 
       <canvas id="myChart" ref={canvasRef}>
