@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState } from 'react'
 
 export const Context = createContext()
-axios.defaults.baseURL = 'http://localhost:3000/api';
+axios.defaults.baseURL = '/api';
 export const ContextProvider = ({ children }) => {
 
   const [users, setUsers] = useState([])
