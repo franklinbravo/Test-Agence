@@ -11,10 +11,11 @@ import { ChartPie } from '../Components/ChartPie'
 
 
 
-const years = (end = 1999) => {
+const years = (end = 2003) => {
+  --end
   const init = new Date('2008').getFullYear()
   const arrayYears = []
-  while (init >= end) {
+  while (init > end) {
     arrayYears.push(++end)
   }
   return arrayYears;
@@ -188,6 +189,8 @@ export const Desempenho = () => {
     }
     if (allData.length > 0) {
       dividerArray()
+    } else {
+      setdataUserSorted([])
     }
 
   }, [allData])

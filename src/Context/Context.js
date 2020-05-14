@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState } from 'react'
 
 export const Context = createContext()
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = 'http://localhost:3000/api';
 export const ContextProvider = ({ children }) => {
 
   const [users, setUsers] = useState([])
@@ -21,14 +21,15 @@ export const ContextProvider = ({ children }) => {
               msg: "Datos obtenidos exitosamente",
               type: "success"
             })
+            setAllData(res.data.dataUsers)
           }
-          setAllData(res.data.dataUsers)
+
         } else {
           setAlertStatus({
             msg: "No hay datos de los usuarios",
             type: "info"
           })
-          setAllData(res.data.dataUsers)
+          setAllData([])
         }
       }).catch((err) => {
         console.error(err);
