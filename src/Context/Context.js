@@ -18,7 +18,7 @@ export const ContextProvider = ({ children }) => {
         if (res.data.info === "SUCCESS") {
           if (JSON.stringify(res.data.dataUsers) !== JSON.stringify(allData)) {
             setAlertStatus({
-              msg: "Datos obtenidos exitosamente",
+              msg: "Dados obtidos com sucesso",
               type: "success"
             })
             setAllData(res.data.dataUsers)
@@ -26,7 +26,7 @@ export const ContextProvider = ({ children }) => {
 
         } else {
           setAlertStatus({
-            msg: "No hay datos de los usuarios",
+            msg: "Sem dados do usuários",
             type: "info"
           })
           setAllData([])
@@ -34,7 +34,7 @@ export const ContextProvider = ({ children }) => {
       }).catch((err) => {
         console.error(err);
         setAlertStatus({
-          msg: "Hubo un error",
+          msg: "Houve um erro.",
           type: "danger"
         })
       })

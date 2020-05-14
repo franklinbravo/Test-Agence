@@ -197,65 +197,67 @@ export const Desempenho = () => {
 
   return (
     <Container style={{ paddingTop: 150 }}  >
-      <form className="w-100" >
-        <Row>
-          <Col sm="2" xs="6">
-            <Form.Group >
-              <Form.Control as="select" onChange={handleChangeDate} name="yearStart" size="sm" isInvalid={errors.yearStart} >
-                <option value=""></option>
-                {
-                  years().map((year, i) => (
-                    <option value={year} key={i}> {year}</option>
-                  ))
-                }
-              </Form.Control>
-            </Form.Group>
-          </Col>
-          <Col sm="2" xs="6">
-            <Form.Group >
-              <Form.Control as="select" onChange={handleChangeDate} name="monthStart" size="sm" isInvalid={errors.monthStart} >
-                <option value=""></option>
-                {
-                  moment.months().map((month, i) => (
-                    <option value={i} key={i}> {month}</option>
-                  ))
-                }
-              </Form.Control>
-            </Form.Group>
-          </Col>
-          <Col sm="2" xs="12" >
-            <h5 className="text-center" >a</h5>
-          </Col>
-          <Col sm="2" xs="6">
-            <Form.Group >
-              <Form.Control as="select" onChange={handleChangeDate} name="yearEnd" disabled={!dates.yearStart} size="sm" isInvalid={errors.yearEnd} >
-                <option value=""></option>
-                {
-                  years(dates.yearStart).map((year, i) => (
-                    <option value={year} key={i}> {year}</option>
-                  ))
-                }
-              </Form.Control>
-            </Form.Group>
-          </Col>
-          <Col sm="2" xs="6">
-            <Form.Group >
-              <Form.Control as="select" onChange={handleChangeDate} name="monthEnd" size="sm" isInvalid={errors.monthEnd} >
-                <option value=""></option>
-                {
-                  moment.months().map((month, i) => (
-                    <option value={i} key={i}> {month}</option>
-                  ))
-                }
-              </Form.Control>
-            </Form.Group>
-          </Col>
-        </Row>
-      </form>
+      <Row>
+        <Col sm="2" xs="6">
+          <Form.Group >
+            <Form.Label>Ano inicial</Form.Label>
+            <Form.Control as="select" onChange={handleChangeDate} name="yearStart" size="sm" isInvalid={errors.yearStart} >
+              <option value=""></option>
+              {
+                years().map((year, i) => (
+                  <option value={year} key={i}> {year}</option>
+                ))
+              }
+            </Form.Control>
+          </Form.Group>
+        </Col>
+        <Col sm="2" xs="6">
+          <Form.Group >
+            <Form.Label>Mês inicial</Form.Label>
+            <Form.Control as="select" onChange={handleChangeDate} name="monthStart" size="sm" isInvalid={errors.monthStart} >
+              <option value=""></option>
+              {
+                moment.months().map((month, i) => (
+                  <option value={i} key={i}> {month}</option>
+                ))
+              }
+            </Form.Control>
+          </Form.Group>
+        </Col>
+        <Col sm="2" xs="12" >
+          <h5 className="text-center" >a</h5>
+        </Col>
+        <Col sm="2" xs="6">
+          <Form.Group >
+            <Form.Label>Ano Final</Form.Label>
+            <Form.Control as="select" onChange={handleChangeDate} name="yearEnd" disabled={!dates.yearStart} size="sm" isInvalid={errors.yearEnd} >
+              <option value=""></option>
+              {
+                years(dates.yearStart).map((year, i) => (
+                  <option value={year} key={i}> {year}</option>
+                ))
+              }
+            </Form.Control>
+          </Form.Group>
+        </Col>
+        <Col sm="2" xs="6">
+          <Form.Group >
+            <Form.Label>Mês final</Form.Label>
+            <Form.Control as="select" onChange={handleChangeDate} name="monthEnd" size="sm" isInvalid={errors.monthEnd} >
+              <option value=""></option>
+              {
+                moment.months().map((month, i) => (
+                  <option value={i} key={i}> {month}</option>
+                ))
+              }
+            </Form.Control>
+          </Form.Group>
+        </Col>
+      </Row>
       <Row style={{ height: 200 }}>
         <Col className="mt-auto mb-auto">
           <Form.Group >
-            <Form.Label>Usuarios</Form.Label>
+            <Form.Label>Usuários</Form.Label>
             <Form.Control as="select" multiple onChange={selectBoxUsersLeft} ref={leftBoxRef} >
               {
                 boxLeft.map(({ co_usuario, no_usuario }, i) => (
@@ -283,10 +285,10 @@ export const Desempenho = () => {
         </Col>
         <Col sm="2" className="d-flex justify-content-center flex-column">
           <Button className="mt-1" onClick={showTable} variant="outline-dark" >
-            Relatorio
+            Relátorio
           </Button>
           <Button className="mt-1" variant="outline-dark" onClick={showChartBar} >
-            Grafico
+            Gráfico
           </Button>
           <Button className="mt-1" variant="outline-dark" onClick={showChartPie} >
             Pizza

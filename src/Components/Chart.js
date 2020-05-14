@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import Chartjs from "chart.js";
 import * as moment from 'moment'
+import 'moment/locale/pt-br'
 import FormatCurrency from './FormatCurrency'
 
 export const Chart = ({ data = [], dates }) => {

@@ -12,7 +12,7 @@ app.use(express.json());
 
 
 //Routes
-app.use(require('./src/routes/caol.routes'));
+app.use(require('./server/routes/caol.routes'));
 
 //Static Files
 app.use(express.static(path.join(__dirname, 'build')));
